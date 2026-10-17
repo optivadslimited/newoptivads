@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact Us — Optivads</title>
+<meta name="description" content="Tell us about your app and growth targets. Optivads replies within one business day with next steps and a tailored rate card.">
+<meta property="og:title" content="Contact Us — Optivads">
+<meta property="og:description" content="Tell us about your app and growth targets. Optivads replies within one business day with next steps and a tailored rate card.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="index.html" aria-label="Optivads home"><img src="assets/img/mark.svg" alt="" width="34" height="34">Opti<b>vads</b></a>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="performance-media-buying.html">Performance Media Buying</a>
+      <a href="creator-content-marketing.html">Creator &amp; Content</a>
+      <a href="index.html#clients">Clients</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="contact.html">Let's talk <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="page-hero" style="padding-bottom:40px">
+  <div class="container">
+    <span class="eyebrow">Contact us</span>
+    <h1>Let's build your <span>growth plan</span></h1>
+    <p class="lead">Tell us about your app and your targets. We reply within one business day with next steps, and send a tailored rate card within 48 hours.</p>
+  </div>
+</section>
+<section class="section" style="padding-top:24px">
+  <div class="container contact-grid">
+    <form class="form-card reveal" id="contact-form" data-to="hello@optivads.com">
+      <div class="form-grid">
+        <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Jane Doe"></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization" required placeholder="Your company"></div>
+        <div class="field"><label for="f-email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com"></div>
+        <div class="field"><label for="f-app">App or website</label><input id="f-app" name="app" type="url" placeholder="https://"></div>
+        <div class="field full"><label for="f-budget">Monthly media budget</label>
+          <select id="f-budget" name="budget">
+            <option value="">Select a range</option>
+            <option>Under $10k</option>
+            <option>$10k – $50k</option>
+            <option>$50k – $150k</option>
+            <option>$150k – $500k</option>
+            <option>$500k+</option>
+          </select>
+        </div>
+        <div class="field full"><span class="group-label">What are you interested in?</span>
+          <div class="checks">
+            <label><input type="checkbox" name="services" value="Programmatic Media Buying">Programmatic (TikTok &amp; Snapchat Ads)</label>
+            <label><input type="checkbox" name="services" value="On-device Traffic">On-device Traffic</label>
+            <label><input type="checkbox" name="services" value="In-app, In-game & CTV">In-app, In-game &amp; CTV</label>
+            <label><input type="checkbox" name="services" value="OEM">OEM</label>
+            <label><input type="checkbox" name="services" value="Influencer Marketing">Influencer Marketing</label>
+            <label><input type="checkbox" name="services" value="Creative Studio">Creative Studio</label>
+            <label><input type="checkbox" name="services" value="UGC">UGC</label>
+            <label><input type="checkbox" name="services" value="Not sure yet">Not sure yet</label>
+          </div>
+        </div>
+        <div class="field full"><label for="f-message">Tell us about your goals</label><textarea id="f-message" name="message" placeholder="Target markets, KPIs, current channels, timelines…"></textarea></div>
+      </div>
+      <div class="form-foot">
+        <button class="btn btn-primary" type="submit">Send enquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        <small>By submitting you agree to be contacted about your enquiry. We never share your details.</small>
+      </div>
+      <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+    </form>
+    <aside class="info-card reveal" data-delay="1">
+      <h3>Talk to the team</h3>
+      <p>Prefer email or a call? Reach us directly and a senior member of the team will get back to you.</p>
+      <ul class="info-list">
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg></span><div><small>Email</small><a href="mailto:hello@optivads.com">hello@optivads.com</a></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span><div><small>Phone</small><a href="tel:+442045427701">+44 204 542 7701</a></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><small>Office</small><span>London, United Kingdom</span></div></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><small>Response time</small><span>Within one business day</span></div></li>
+      </ul>
+      <div class="social">
+        <a href="https://www.linkedin.com/company/optivadslimited" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        <a href="https://www.instagram.com/optivadslimited/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+        <a href="https://x.com/optivadslimited" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg></a>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html" aria-label="Optivads home"><img src="assets/img/mark.svg" alt="" width="34" height="34">Opti<b>vads</b></a>
+        <p class="tagline">Performance media buying and creator marketing for mobile apps that need to grow profitably.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/company/optivadslimited" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="https://www.instagram.com/optivadslimited/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></a>
+          <a href="https://x.com/optivadslimited" target="_blank" rel="noopener" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.47l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3l13.31 17.41z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Performance</h4>
+        <ul>
+          <li><a href="performance-media-buying.html#programmatic">Programmatic Media Buying</a></li>
+          <li><a href="performance-media-buying.html#on-device">On-device Traffic</a></li>
+          <li><a href="performance-media-buying.html#in-app">In-app, In-game &amp; CTV</a></li>
+          <li><a href="performance-media-buying.html#oem">OEM</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Creator &amp; Content</h4>
+        <ul>
+          <li><a href="creator-content-marketing.html#influencer">Influencer Marketing</a></li>
+          <li><a href="creator-content-marketing.html#creative-studio">Creative Studio</a></li>
+          <li><a href="creator-content-marketing.html#ugc">UGC</a></li>
+          <li><a href="index.html#clients">Clients</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@optivads.com">hello@optivads.com</a></li>
+          <li><a href="tel:+442045427701">+44 204 542 7701</a></li>
+          <li>London, United Kingdom</li>
+          <li><a href="contact.html">Book a call →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> Optivads Limited. All rights reserved.</span>
+      <ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">Terms of Use</a></li></ul>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

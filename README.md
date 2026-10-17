@@ -1,0 +1,37 @@
+# Optivads — website rebrand
+
+Static site (plain HTML, CSS and JavaScript, no build step). Open `index.html` in a browser or serve the folder with any static host (Vercel, Netlify, GitHub Pages, S3, cPanel).
+
+## Pages
+
+| File | Purpose |
+| --- | --- |
+| `index.html` | Home: hero, client logos, stats, Performance Media Buying, Creator & Content Marketing, process, why Optivads, verticals, CTA |
+| `performance-media-buying.html` | Programmatic (TikTok Ads & Snapchat Ads), On-device Traffic, In-app / In-game / CTV, OEM |
+| `creator-content-marketing.html` | Influencer Marketing, Creative Studio, UGC |
+| `contact.html` | Contact form and contact details |
+
+Shared files: `assets/css/styles.css`, `assets/js/main.js`, `assets/img/mark.svg` (logo mark and favicon), `assets/clients/` (client logos).
+
+## Brand
+
+- Blue `#007bff` (primary), `#0056cc` (dark), `#003c8f` (deep, gradients). White backgrounds, navy `#0a1a33` text.
+- All colours live as CSS variables at the top of `styles.css`.
+- Font: Plus Jakarta Sans (Google Fonts).
+
+## Things to update
+
+1. **Rates** — the "Pricing models" panel on the home page (`#why`) lists CPI / CPA / CPL / CPM / Hybrid with "rates on request". Drop the actual rates in there, or add a pricing table, once available.
+2. **Email** — `hello@optivads.com` is a placeholder used in the footer, CTA bands, contact page and the form's `data-to` attribute. Search and replace it with the real inbox.
+3. **Contact form** — currently opens the visitor's email client with the details prefilled (no backend). To collect leads server-side, point the form at Formspree, HubSpot, Netlify Forms or your CRM and remove the mailto handler in `main.js`.
+4. **Stats** — the four headline numbers (12M+ impressions, 2M+ installs, +45% ROAS lift, +23.4% daily install growth) and the hero dashboard figures were carried over from the previous optivads.com. Confirm or replace them.
+5. **Legal pages** — Privacy Policy, Cookie Policy and Terms of Use links in the footer point to `#`.
+6. **Client logos** — app icons come from the App Store / Google Play (via AppKittie). FinanceAds uses its favicon cube, Welltech its wordmark SVG. Swap any of them for official brand assets in `assets/clients/`.
+
+## Local preview
+
+```bash
+python3 -m http.server 8765
+```
+
+Then open http://localhost:8765.
