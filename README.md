@@ -28,6 +28,17 @@ Shared files: `assets/css/styles.css`, `assets/js/main.js`, `assets/img/mark.svg
 5. **Legal pages** — Privacy Policy, Cookie Policy and Terms of Use links in the footer point to `#`.
 6. **Client logos** — app icons come from the App Store / Google Play (via AppKittie). FinanceAds uses its favicon cube, Welltech its wordmark SVG. Swap any of them for official brand assets in `assets/clients/`.
 
+## Hosting
+
+The site is hosted with GitHub Pages from the `main` branch of
+https://github.com/optivadslimited/newoptivads and is live at
+https://optivadslimited.github.io/newoptivads/.
+
+Every push to `main` redeploys automatically (allow one to two minutes). To use the
+optivads.com domain later, add a `CNAME` file containing the domain to the repo root,
+point the domain's DNS at GitHub Pages, and set the custom domain in the repo's
+Settings → Pages.
+
 ## Local preview
 
 ```bash
