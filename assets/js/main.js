@@ -88,25 +88,58 @@
     el.textContent = new Date().getFullYear();
   });
 
-  // Contact form: builds a prefilled email until a backend/form service is connected
+  // Contact form: two-level interest picker + prefilled email (until a backend/form service is connected)
   var form = document.getElementById('contact-form');
   if (form) {
+    var interest = document.getElementById('interest');
+    var interestError = document.getElementById('interest-error');
+    var pillars = form.querySelectorAll('input[name="pillar"]');
+    pillars.forEach(function (p) {
+      var card = p.closest('.pillar');
+      var panel = document.getElementById(p.getAttribute('data-channels'));
+      var sync = function () {
+        if (card) card.classList.toggle('on', p.checked);
+        if (panel) {
+          panel.hidden = !p.checked;
+          if (!p.checked) panel.querySelectorAll('input').forEach(function (c) { c.checked = false; });
+        }
+        if (p.checked && interest) {
+          interest.classList.remove('invalid');
+          if (interestError) interestError.classList.remove('show');
+        }
+      };
+      p.addEventListener('change', sync);
+      sync();
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+      var chosen = Array.prototype.slice.call(form.querySelectorAll('input[name="pillar"]:checked'));
+      if (!chosen.length) {
+        if (interest) { interest.classList.add('invalid'); interest.scrollIntoView({ block: 'center' }); }
+        if (interestError) interestError.classList.add('show');
+        if (pillars[0]) pillars[0].focus();
+        return;
+      }
       var fd = new FormData(form);
-      var services = fd.getAll('services').join(', ') || 'Not specified';
+      var interests = chosen.map(function (p) {
+        var key = p.getAttribute('data-channels') === 'ch-performance' ? 'performance' : 'creator';
+        var ch = fd.getAll(key);
+        return p.value + (ch.length ? ' (' + ch.join(', ') + ')' : ' (channels to be discussed)');
+      });
       var lines = [
         'Name: ' + fd.get('name'),
         'Company: ' + fd.get('company'),
         'Work email: ' + fd.get('email'),
-        'App / website: ' + (fd.get('app') || '-'),
-        'Monthly budget: ' + (fd.get('budget') || '-'),
-        'Interested in: ' + services,
+        'App / website: ' + fd.get('app'),
+        'Monthly media budget: ' + fd.get('budget'),
+        'Interested in:',
+        interests.map(function (i) { return '  - ' + i; }).join('\n'),
         '',
-        'Message:',
+        'Goals:',
         fd.get('message') || '-'
       ];
-      var to = form.getAttribute('data-to') || 'hello@optivads.com';
+      var to = form.getAttribute('data-to') || 'partnership@optivads.com';
       var subject = 'New enquiry from ' + (fd.get('company') || fd.get('name'));
       var href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
       var status = document.getElementById('form-status');

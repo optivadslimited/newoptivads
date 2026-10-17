@@ -11,7 +11,7 @@ Static site (plain HTML, CSS and JavaScript, no build step). Open `index.html` i
 | `creator-content-marketing.html` | Influencer Marketing, Creative Studio, UGC |
 | `contact.html` | Contact form and contact details |
 
-Shared files: `assets/css/styles.css`, `assets/js/main.js`, `assets/img/mark.svg` (logo mark and favicon), `assets/clients/` (client logos).
+Shared files: `assets/css/styles.css`, `assets/js/main.js` (both linked with a `?v=` query; bump it when you change them so browsers fetch the new version), `assets/img/mark.svg` (logo mark and favicon), `assets/clients/` (client logos).
 
 ## Brand
 
@@ -22,8 +22,8 @@ Shared files: `assets/css/styles.css`, `assets/js/main.js`, `assets/img/mark.svg
 ## Things to update
 
 1. **Rates** — the "Pricing models" panel on the home page (`#why`) lists CPI / CPA / CPL / CPM / Hybrid with "rates on request". Drop the actual rates in there, or add a pricing table, once available.
-2. **Email** — `hello@optivads.com` is a placeholder used in the footer, CTA bands, contact page and the form's `data-to` attribute. Search and replace it with the real inbox.
-3. **Contact form** — currently opens the visitor's email client with the details prefilled (no backend). To collect leads server-side, point the form at Formspree, HubSpot, Netlify Forms or your CRM and remove the mailto handler in `main.js`.
+2. **Contact details** — `partnership@optivads.com` and `+44 7739 364474` are used in the offices bar, footer, CTA bands, contact page and the form's `data-to` attribute. Offices: Global West (Optivads Limited, London WC2H 9JQ) and MENA (Veltadsap, sister agency, Casablanca) appear in the offices bar, the home page "Where we operate" section, the footer and the contact page.
+3. **Contact form** — required: name, company, work email, app/website, budget and at least one interest (Performance Media Buying and/or Creator & Content Marketing, each revealing its channels). It currently opens the visitor's email client with the details prefilled (no backend). To collect leads server-side, point the form at Formspree, HubSpot, Netlify Forms or your CRM and remove the mailto handler in `main.js`.
 4. **Stats** — the four headline numbers (12M+ impressions, 2M+ installs, +45% ROAS lift, +23.4% daily install growth) and the hero dashboard figures were carried over from the previous optivads.com. Confirm or replace them.
 5. **Legal pages** — Privacy Policy, Cookie Policy and Terms of Use links in the footer point to `#`.
 6. **Client logos** — app icons come from the App Store / Google Play (via AppKittie). FinanceAds uses its favicon cube, Welltech its wordmark SVG. Swap any of them for official brand assets in `assets/clients/`.
