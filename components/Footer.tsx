@@ -48,7 +48,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="grid grid-cols-1 gap-10 border-b border-white/[0.12] pb-11 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr]">
           <div>
-            <Logo className="text-white" />
+            <Logo variant="full" className="h-[72px]" />
             <p className="mb-[22px] mt-4 max-w-[36ch] text-[15px]">
               Performance media buying and creator marketing for mobile apps that need to grow profitably.
             </p>

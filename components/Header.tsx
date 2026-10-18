@@ -29,7 +29,7 @@ export default function Header() {
       }`}
     >
       <div className="wrap flex h-[76px] items-center justify-between gap-6">
-        <Logo className="text-ink" />
+        <Logo variant="wordmark" className="h-4 sm:h-7 md:h-[30px]" />
 
         <nav
           id="nav-links"

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   description:
     "Optivads is a performance marketing agency for mobile apps. Programmatic media buying, on-device, in-app, CTV and OEM traffic, plus influencer marketing, creative studio and UGC.",
-  icons: { icon: asset("/favicon.svg") },
+  icons: { icon: asset("/favicon.png"), apple: asset("/apple-touch-icon.png") },
   openGraph: {
     title: "Optivads — Performance Media Buying & Creator Marketing",
     description:

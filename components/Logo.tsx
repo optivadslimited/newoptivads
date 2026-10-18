@@ -1,15 +1,23 @@
 import Link from "next/link";
 import { asset } from "@/lib/site";
 
-export default function Logo({ className = "" }: { className?: string }) {
+type Props = {
+  /** `wordmark`: OPTIVADS only (header). `full`: wordmark + "Driving Results, Delivering Growth" + chevrons (footer). */
+  variant?: "wordmark" | "full";
+  /** Sets the rendered height, e.g. `h-7`. Width follows the image's aspect ratio. */
+  className?: string;
+};
+
+const ART = {
+  wordmark: { src: "/logo-wordmark.png", width: 1200, height: 120 },
+  full: { src: "/logo-full.png", width: 1400, height: 240 },
+};
+
+export default function Logo({ variant = "wordmark", className = "h-7" }: Props) {
+  const art = ART[variant];
   return (
-    <Link
-      href="/"
-      aria-label="Optivads home"
-      className={`inline-flex items-center gap-2.5 text-[20px] font-extrabold tracking-[-0.03em] sm:text-[22px] ${className}`}
-    >
-      <img src={asset("/mark.svg")} alt="" width={34} height={34} className="h-[30px] w-[30px] sm:h-[34px] sm:w-[34px]" />
-      Opti<b className="font-extrabold text-blue">vads</b>
+    <Link href="/" aria-label="Optivads home" className="inline-flex shrink-0 items-center">
+      <img src={asset(art.src)} alt="Optivads" width={art.width} height={art.height} className={`w-auto ${className}`} />
     </Link>
   );
 }
