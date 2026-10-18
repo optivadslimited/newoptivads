@@ -31,10 +31,6 @@ Welcome to the privacy policy of Optivads Limited ("Optivads", "we", "us"). This
 
 We are the data controller for personal data collected via optivads.com, our contact forms, emails, analytics and marketing tools, and CRM. Where we process end-user data for clients' ad campaigns, we typically act as processor to the advertiser; publishers may act as sub-processors (see our DPA, available on request).
 
-**EU representative (Art. 27 GDPR):** [[Name/Company, Address, Email]]
-
-**UK ICO registration:** [[If applicable: registration number]]
-
 ## 2) What data we collect
 
 ### a) Data you provide
@@ -87,10 +83,10 @@ We only set non-essential cookies/trackers (e.g., GA4, Meta Pixel) after you opt
 
 We share only what's necessary with trusted providers under data processing agreements:
 
-* **Hosting & infrastructure:** [[e.g., AWS EU/Ireland or your host]], Cloudflare/CDN.
+* **Hosting & infrastructure:** Cloudflare.
 * **Analytics/ads:** Google Analytics 4 (Google LLC), Meta Platforms, Inc., LinkedIn Corporation (only if you consent).
-* **Productivity & CRM:** Google Workspace (email/docs), Monday.com (project management), [[CRM if any]].
-* **Payments & accounting (if you become a client):** [[Revolut/Wise/Accountant]].
+* **Productivity & CRM:** Google Workspace, Monday.com.
+* **Payments & accounting (if you become a client):** Revolut, Payoneer, PayPal, Stripe.
 * **Professional advisors:** legal, tax, auditors (when needed).
 
 We do not sell your personal data.
@@ -124,7 +120,6 @@ We use a Consent Management Platform (CMP) to collect and record your choices.
 
 * Essential cookies run to make the site work (security, load balancing).
 * Analytics/marketing cookies run only if you opt in.
-* You can change your choices any time via the cookie banner link: [[Manage Cookies / CMP link]].
 
 See our detailed Cookie Notice (types, purposes, lifetimes, providers): [Cookie Policy](/cookie-policy).
 
@@ -154,7 +149,6 @@ We reply within 1 month (extendable by 2 months for complex requests). We may as
 ### You can also:
 
 * Unsubscribe from emails using the unsubscribe link in our messages.
-* Change cookie choices via [[Manage Cookies / CMP link]].
 
 ## 11) Children
 
