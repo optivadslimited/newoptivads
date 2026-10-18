@@ -269,6 +269,8 @@ button{font:inherit}
 .form-foot small{color:var(--muted);font-size:13px;max-width:46ch}
 .form-status{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--blue-50);color:var(--blue-dark);font-weight:600;font-size:14px;display:none}
 .form-status.show{display:block}
+.form-status.ok{background:#e8f8ef;color:#0f6b3a}
+.hp{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden}
 .info-card{background:linear-gradient(160deg,var(--blue-deep),var(--blue));color:#fff;border-radius:24px;padding:36px;box-shadow:var(--shadow-lg)}
 .info-card h3{font-size:1.4rem;margin-bottom:10px}
 .info-card p{color:rgba(255,255,255,.85)}

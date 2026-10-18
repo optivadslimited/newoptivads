@@ -112,21 +112,21 @@
       sync();
     });
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var chosen = Array.prototype.slice.call(form.querySelectorAll('input[name="pillar"]:checked'));
-      if (!chosen.length) {
-        if (interest) { interest.classList.add('invalid'); interest.scrollIntoView({ block: 'center' }); }
-        if (interestError) interestError.classList.add('show');
-        if (pillars[0]) pillars[0].focus();
-        return;
-      }
-      var fd = new FormData(form);
-      var interests = chosen.map(function (p) {
+    var status = document.getElementById('form-status');
+    var setStatus = function (msg, kind) {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'form-status show' + (kind ? ' ' + kind : '');
+    };
+    var describeInterests = function (chosen, fd) {
+      return chosen.map(function (p) {
         var key = p.getAttribute('data-channels') === 'ch-performance' ? 'performance' : 'creator';
         var ch = fd.getAll(key);
         return p.value + (ch.length ? ' (' + ch.join(', ') + ')' : ' (channels to be discussed)');
       });
+    };
+    // Fallback when the lead endpoint is unavailable: open the visitor's email client prefilled.
+    var mailtoFallback = function (fd, interests) {
       var lines = [
         'Name: ' + fd.get('name'),
         'Company: ' + fd.get('company'),
@@ -141,13 +141,49 @@
       ];
       var to = form.getAttribute('data-to') || 'partnership@optivads.com';
       var subject = 'New enquiry from ' + (fd.get('company') || fd.get('name'));
-      var href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-      var status = document.getElementById('form-status');
-      if (status) {
-        status.textContent = 'Opening your email client with the details prefilled. If nothing happens, email us directly at ' + to + '.';
-        status.classList.add('show');
+      setStatus('Opening your email client with the details prefilled. If nothing happens, email us directly at ' + to + '.');
+      window.location.href = 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    };
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var chosen = Array.prototype.slice.call(form.querySelectorAll('input[name="pillar"]:checked'));
+      if (!chosen.length) {
+        if (interest) { interest.classList.add('invalid'); interest.scrollIntoView({ block: 'center' }); }
+        if (interestError) interestError.classList.add('show');
+        if (pillars[0]) pillars[0].focus();
+        return;
       }
-      window.location.href = href;
+      var fd = new FormData(form);
+      var interests = describeInterests(chosen, fd);
+      var endpoint = form.getAttribute('data-endpoint');
+      if (!endpoint || !window.fetch) { mailtoFallback(fd, interests); return; }
+
+      var button = form.querySelector('button[type="submit"]');
+      if (button) button.disabled = true;
+      setStatus('Sending your enquiry…');
+      var payload = {
+        name: fd.get('name'),
+        company: fd.get('company'),
+        email: fd.get('email'),
+        app: fd.get('app'),
+        budget: fd.get('budget'),
+        interests: chosen.map(function (p) { return p.value; }),
+        channels: fd.getAll('performance').concat(fd.getAll('creator')),
+        message: fd.get('message') || '',
+        website: fd.get('website') || '',
+        page: location.href
+      };
+      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+        .then(function (r) { return r.json().then(function (j) { return r.ok && j && j.ok; }); })
+        .then(function (ok) {
+          if (!ok) throw new Error('Lead endpoint rejected the submission');
+          form.reset();
+          pillars.forEach(function (p) { p.dispatchEvent(new Event('change')); });
+          setStatus('Thanks! Your enquiry is in. A senior member of the team will get back to you within one business day.', 'ok');
+        })
+        .catch(function () { mailtoFallback(fd, interests); })
+        .then(function () { if (button) button.disabled = false; });
     });
   }
 })();
