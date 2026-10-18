@@ -209,7 +209,7 @@ export default function HomePage() {
                   key={`${c.file}-${i}`}
                   className="inline-flex items-center gap-3 whitespace-nowrap text-[17px] font-bold tracking-[-0.01em] text-ink-2 opacity-75 grayscale transition-[filter,opacity] duration-300 hover:opacity-100 hover:grayscale-0"
                 >
-                  <img src={asset(`/clients/${c.file}.png`)} alt="" loading="lazy" width={44} height={44} className="h-11 w-11 rounded-[12px] shadow-[0_2px_8px_rgba(10,26,51,0.12)]" />
+                  <img src={asset(`/clients/${c.file}.png?v=2`)} alt="" loading="lazy" width={44} height={44} className="h-11 w-11 rounded-[12px] shadow-[0_2px_8px_rgba(10,26,51,0.12)]" />
                   {c.name}
                 </div>
               ))}
