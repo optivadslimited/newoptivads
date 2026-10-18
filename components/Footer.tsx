@@ -9,6 +9,11 @@ const performance = [
   { href: "/performance-media-buying#in-app", label: "In-app, In-game & CTV" },
   { href: "/performance-media-buying#oem", label: "OEM" },
 ];
+const LEGAL = [
+  { href: "https://optivads.com/privacy-policy", label: "Privacy Policy" },
+  { href: "https://optivads.com/cookie-policy", label: "Cookie Policy" },
+  { href: "https://optivads.com/terms-of-use", label: "Terms of Use" },
+];
 const creator = [
   { href: "/creator-content-marketing#influencer", label: "Influencer Marketing" },
   { href: "/creator-content-marketing#creative-studio", label: "Creative Studio" },
@@ -113,10 +118,10 @@ export default function Footer() {
         <div className="flex flex-wrap justify-between gap-3 pt-6 text-[13.5px] text-white/55">
           <span>© {new Date().getFullYear()} Optivads Limited. All rights reserved.</span>
           <ul className="flex gap-[18px]">
-            {["Privacy Policy", "Cookie Policy", "Terms of Use"].map((l) => (
-              <li key={l} className="mb-2.5 text-[15px]">
-                <a href="#" className="hover:text-white">
-                  {l}
+            {LEGAL.map((l) => (
+              <li key={l.href} className="mb-2.5 text-[15px]">
+                <a href={l.href} className="hover:text-white">
+                  {l.label}
                 </a>
               </li>
             ))}

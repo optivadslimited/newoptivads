@@ -65,5 +65,5 @@ curl -X POST https://optivads-leads.vercel.app/api/lead -H 'Content-Type: applic
 1. **Rates** — the "Pricing models" panel on the home page lists CPI / CPA / CPL / CPM / Hybrid with "rates on request".
 2. **Contact details** — email, phone and both office addresses live in `lib/site.ts`.
 3. **Stats** — the four headline numbers and the hero dashboard figures are in `app/page.tsx` (`STATS`, KPI tiles).
-4. **Legal pages** — Privacy Policy, Cookie Policy and Terms of Use links in the footer point to `#`.
+4. **Legal pages** — the footer links to the Privacy Policy, Cookie Policy and Terms of Use on optivads.com (`LEGAL` in `components/Footer.tsx`).
 5. **Client logos** — `lib/site.ts` (`CLIENTS`) and `public/clients/`. App icons come from the App Store / Google Play.
