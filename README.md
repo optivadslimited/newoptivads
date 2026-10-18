@@ -1,65 +1,69 @@
-# Optivads — website rebrand
+# Optivads — website
 
-Static site (plain HTML, CSS and JavaScript, no build step). Open `index.html` in a browser or serve the folder with any static host (Vercel, Netlify, GitHub Pages, S3, cPanel).
+Marketing site for Optivads (performance media buying + creator marketing for mobile apps), built with **Next.js 16** (App Router, TypeScript) and **Tailwind CSS 4**. The contact form writes leads to monday.com through a server-side API route.
 
-## Pages
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # production build
+npm start        # serve the production build
+npm run typecheck
+```
 
-| File | Purpose |
+## Structure
+
+| Path | Purpose |
 | --- | --- |
-| `index.html` | Home: hero, client logos, stats, Performance Media Buying, Creator & Content Marketing, process, why Optivads, verticals, CTA |
-| `performance-media-buying.html` | Programmatic (TikTok Ads & Snapchat Ads), On-device Traffic, In-app / In-game / CTV, OEM |
-| `creator-content-marketing.html` | Influencer Marketing, Creative Studio, UGC |
-| `contact.html` | Contact form and contact details |
-
-Shared files: `assets/css/styles.css`, `assets/js/main.js` (both linked with a `?v=` query; bump it when you change them so browsers fetch the new version), `assets/img/mark.svg` (logo mark and favicon), `assets/clients/` (client logos).
+| `app/layout.tsx` | HTML shell: Google Fonts link, header, footer, metadata, scroll effects |
+| `app/page.tsx` | Home: hero + dashboard, client marquee, stats, services, process, why Optivads, verticals, offices, CTA |
+| `app/performance-media-buying/page.tsx` | Programmatic, On-device, In-app / In-game / CTV, OEM |
+| `app/creator-content-marketing/page.tsx` | Influencer Marketing, Creative Studio, UGC |
+| `app/contact/page.tsx` | Contact form and contact details |
+| `app/api/lead/route.ts` | POST endpoint that creates a monday.com item from the form |
+| `app/globals.css` | Tailwind import, `@theme` design tokens (colours, font, radii, shadows, breakpoints, keyframes) and the few component classes (`btn`, `card`, `chip`, `kicker`, hero/CTA overlays, reveal) |
+| `components/` | `Header`, `Footer`, `Btn`, `Icon`, `SectionHead`, `ServiceCard`, `Feature`, `PageHero`, `SubNav`, `CtaBand`, `ContactForm`, `SiteEffects` |
+| `lib/site.ts` | Contact details, nav, client list, base-path helper, lead endpoint |
+| `public/` | Logo mark, favicon, client app icons |
 
 ## Brand
 
 - Blue `#007bff` (primary), `#0056cc` (dark), `#003c8f` (deep, gradients). White backgrounds, navy `#0a1a33` text.
-- All colours live as CSS variables at the top of `styles.css`.
-- Font: Plus Jakarta Sans (Google Fonts).
+- All tokens live in the `@theme` block at the top of `app/globals.css` (`text-blue`, `bg-soft`, `border-line`, `shadow-float`, …).
+- Breakpoints mirror the original design: `sm` ≥ 641px, `md` ≥ 901px, `lg` ≥ 1025px.
+- Font: Plus Jakarta Sans (Google Fonts, loaded in the layout).
 
-## Things to update
+## Contact form → monday.com
 
-1. **Rates** — the "Pricing models" panel on the home page (`#why`) lists CPI / CPA / CPL / CPM / Hybrid with "rates on request". Drop the actual rates in there, or add a pricing table, once available.
-2. **Contact details** — `partnership@optivads.com` and `+44 7739 364474` are used in the footer, CTA bands, contact page and the form's `data-to` attribute. Offices: Global West (Optivads Limited, London WC2H 9JQ) and MENA (Veltadsap, sister agency, Casablanca) appear in the home page "Where we operate" section, the footer and the contact page.
-3. **Contact form** — required: name, company, work email, app/website, budget and at least one interest (Performance Media Buying and/or Creator & Content Marketing, each revealing its channels). On submit the form POSTs JSON to the lead endpoint named in its `data-endpoint` attribute (`contact.html`), which creates an item on the monday.com board **Website Leads Capture !** (workspace CRM Optivads, board 5106268566). If the endpoint is unreachable the form falls back to opening the visitor's email client prefilled. See **Lead endpoint** below.
-4. **Stats** — the four headline numbers (45M+ impressions, 5M+ installs, +45% ROAS lift, +23.4% daily install growth) and the hero dashboard figures (5M+ installs, 18.4x ROAS, <12% fraud rate) were supplied by Optivads in Oct 2026.
-5. **Legal pages** — Privacy Policy, Cookie Policy and Terms of Use links in the footer point to `#`.
-6. **Client logos** — app icons come from the App Store / Google Play (via AppKittie). Swap any of them for official brand assets in `assets/clients/`.
+The form (`components/ContactForm.tsx`) requires name, company, work email, app/website, budget and at least one interest (each interest reveals its channels). On submit it POSTs JSON to the lead endpoint (`/api/lead` on Vercel, or `NEXT_PUBLIC_LEAD_ENDPOINT` when set). If the endpoint is unreachable it falls back to opening the visitor's email client prefilled.
 
-## Lead endpoint (monday.com)
+`app/api/lead/route.ts` creates an item on the board **Website Leads Capture !** (workspace CRM Optivads, board `5106268566`) in the "New Leads" group, named `Company · Full name`. It resolves columns by title at request time, so columns can be reordered or renamed on monday without a redeploy. Titles it fills: Full Name, Company, Work Email, App or Website, Monthly Media Budget (lower bound of the chosen range), Budget Range, What Are You Interested In?, Channels, Goals / Message, Submitted, Source. Requests are accepted only from the site's own origins, required fields and the email are validated, and submissions that fill the hidden honeypot field are ignored.
 
-`api/lead.js` is a Vercel serverless function; `vercel.json` configures it. It never ships the monday token to the browser: the token lives in the `MONDAY_API_TOKEN` environment variable of the Vercel project. The function resolves board columns by title at request time, so columns can be reordered or renamed on monday without redeploying (titles it fills: Full Name, Company, Work Email, App or Website, Monthly Media Budget, Budget Range, What Are You Interested In?, Channels, Goals / Message, Submitted, Source). It allows requests only from the site's origins (see `ALLOWED_ORIGINS`), validates required fields and ignores submissions that fill the hidden honeypot field.
+Environment variables (see `.env.example`):
 
-Deploy:
+| Variable | Where | Value |
+| --- | --- | --- |
+| `MONDAY_API_TOKEN` | Vercel (Production + Preview), server only | monday personal API token with write access |
+| `MONDAY_BOARD_ID` | Vercel | `5106268566` |
+| `NEXT_PUBLIC_LEAD_ENDPOINT` | GitHub Pages build only | `https://optivads-leads.vercel.app/api/lead` |
 
-1. In Vercel, **Add New → Project**, import `optivadslimited/newoptivads`, name it `optivads-leads` (the form expects `https://optivads-leads.vercel.app/api/lead`; if you use another name, update `data-endpoint` in `contact.html`). Framework preset: Other. No build command.
-2. Environment variables (Production + Preview): `MONDAY_API_TOKEN` = a monday personal API token with write access, `MONDAY_BOARD_ID` = `5106268566`.
-3. Deploy. Every push to `main` redeploys the function alongside GitHub Pages.
-
-Test with:
+Test the endpoint:
 
 ```bash
-curl -X POST https://optivads-leads.vercel.app/api/lead -H 'Content-Type: application/json' -H 'Origin: https://optivadslimited.github.io' \
+curl -X POST https://optivads-leads.vercel.app/api/lead -H 'Content-Type: application/json' \
+  -H 'Origin: https://optivadslimited.github.io' \
   -d '{"name":"Test","company":"TEST delete me","email":"test@example.com","app":"https://example.com","budget":"Under $10k","interests":["Performance Media Buying"],"channels":["OEM"],"message":"hello"}'
 ```
 
 ## Hosting
 
-The site is hosted with GitHub Pages from the `main` branch of
-https://github.com/optivadslimited/newoptivads and is live at
-https://optivadslimited.github.io/newoptivads/.
+**Vercel (primary, serves the site and the API route).** Import `optivadslimited/newoptivads` as a project named `optivads-leads` (the GitHub Pages copy expects `https://optivads-leads.vercel.app/api/lead`; with a different name, change `NEXT_PUBLIC_LEAD_ENDPOINT` in `.github/workflows/pages.yml`). Framework preset: Next.js. Add the environment variables above. Every push to `main` redeploys. To use `optivads.com`, add the domain to the Vercel project.
 
-Every push to `main` redeploys automatically (allow one to two minutes). To use the
-optivads.com domain later, add a `CNAME` file containing the domain to the repo root,
-point the domain's DNS at GitHub Pages, and set the custom domain in the repo's
-Settings → Pages.
+**GitHub Pages (static copy at https://optivadslimited.github.io/newoptivads/).** `.github/workflows/pages.yml` builds a static export (`STATIC_EXPORT=1`, base path `/newoptivads`, API route excluded) and deploys it on every push to `main`. One-time repository setting: Settings → Pages → Source: **GitHub Actions**.
 
-## Local preview
+## Things to update
 
-```bash
-python3 -m http.server 8765
-```
-
-Then open http://localhost:8765.
+1. **Rates** — the "Pricing models" panel on the home page lists CPI / CPA / CPL / CPM / Hybrid with "rates on request".
+2. **Contact details** — email, phone and both office addresses live in `lib/site.ts`.
+3. **Stats** — the four headline numbers and the hero dashboard figures are in `app/page.tsx` (`STATS`, KPI tiles).
+4. **Legal pages** — Privacy Policy, Cookie Policy and Terms of Use links in the footer point to `#`.
+5. **Client logos** — `lib/site.ts` (`CLIENTS`) and `public/clients/`. App icons come from the App Store / Google Play.
