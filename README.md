@@ -19,6 +19,7 @@ npm run typecheck
 | `app/performance-media-buying/page.tsx` | Programmatic, On-device, In-app / In-game / CTV, OEM |
 | `app/creator-content-marketing/page.tsx` | Influencer Marketing, Creative Studio, UGC |
 | `app/contact/page.tsx` | Contact form and contact details |
+| `app/privacy-policy`, `app/cookie-policy`, `app/terms-of-use` | Legal pages; the text lives in `content/*.md` and is rendered by `components/LegalPage.tsx` |
 | `app/api/lead/route.ts` | POST endpoint that creates a monday.com item from the form |
 | `app/globals.css` | Tailwind import, `@theme` design tokens (colours, font, radii, shadows, breakpoints, keyframes) and the few component classes (`btn`, `card`, `chip`, `kicker`, hero/CTA overlays, reveal) |
 | `components/` | `Header`, `Footer`, `Btn`, `Icon`, `SectionHead`, `ServiceCard`, `Feature`, `PageHero`, `SubNav`, `CtaBand`, `ContactForm`, `SiteEffects` |
@@ -65,5 +66,5 @@ curl -X POST https://optivads-leads.vercel.app/api/lead -H 'Content-Type: applic
 1. **Rates** — the "Pricing models" panel on the home page lists CPI / CPA / CPL / CPM / Hybrid with "rates on request".
 2. **Contact details** — email, phone and both office addresses live in `lib/site.ts`.
 3. **Stats** — the four headline numbers and the hero dashboard figures are in `app/page.tsx` (`STATS`, KPI tiles).
-4. **Legal pages** — the footer links to the Privacy Policy, Cookie Policy and Terms of Use on optivads.com (`LEGAL` in `components/Footer.tsx`).
+4. **Legal pages** — edit the markdown in `content/privacy-policy.md`, `content/cookie-policy.md` and `content/terms-of-use.md`; update the `updated` date in the matching page file. The privacy policy still contains `[[…]]` placeholders carried over from the previous site (EU representative, ICO registration, hosting provider, CRM, payments provider, cookie-manager link) that need real values.
 5. **Client logos** — `lib/site.ts` (`CLIENTS`) and `public/clients/`. App icons come from the App Store / Google Play.

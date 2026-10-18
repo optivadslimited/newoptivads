@@ -10,9 +10,9 @@ const performance = [
   { href: "/performance-media-buying#oem", label: "OEM" },
 ];
 const LEGAL = [
-  { href: "https://optivads.com/privacy-policy", label: "Privacy Policy" },
-  { href: "https://optivads.com/cookie-policy", label: "Cookie Policy" },
-  { href: "https://optivads.com/terms-of-use", label: "Terms of Use" },
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/cookie-policy", label: "Cookie Policy" },
+  { href: "/terms-of-use", label: "Terms of Use" },
 ];
 const creator = [
   { href: "/creator-content-marketing#influencer", label: "Influencer Marketing" },
@@ -120,9 +120,9 @@ export default function Footer() {
           <ul className="flex gap-[18px]">
             {LEGAL.map((l) => (
               <li key={l.href} className="mb-2.5 text-[15px]">
-                <a href={l.href} className="hover:text-white">
+                <Link href={l.href} className="hover:text-white">
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
