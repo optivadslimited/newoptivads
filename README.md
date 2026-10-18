@@ -26,7 +26,7 @@ Shared files: `assets/css/styles.css`, `assets/js/main.js` (both linked with a `
 3. **Contact form** — required: name, company, work email, app/website, budget and at least one interest (Performance Media Buying and/or Creator & Content Marketing, each revealing its channels). It currently opens the visitor's email client with the details prefilled (no backend). To collect leads server-side, point the form at Formspree, HubSpot, Netlify Forms or your CRM and remove the mailto handler in `main.js`.
 4. **Stats** — the four headline numbers (45M+ impressions, 5M+ installs, +45% ROAS lift, +23.4% daily install growth) and the hero dashboard figures (5M+ installs, 18.4x ROAS, <12% fraud rate) were supplied by Optivads in Oct 2026.
 5. **Legal pages** — Privacy Policy, Cookie Policy and Terms of Use links in the footer point to `#`.
-6. **Client logos** — app icons come from the App Store / Google Play (via AppKittie). FinanceAds uses its favicon cube, Welltech its wordmark SVG. Swap any of them for official brand assets in `assets/clients/`.
+6. **Client logos** — app icons come from the App Store / Google Play (via AppKittie). Swap any of them for official brand assets in `assets/clients/`.
 
 ## Hosting
 
